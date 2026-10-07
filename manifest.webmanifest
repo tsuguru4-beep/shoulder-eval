@@ -1,0 +1,13 @@
+{
+  "name": "肩関節 初回評価ナビ",
+  "short_name": "肩評価",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EDF1F0",
+  "theme_color": "#0B6E69",
+  "lang": "ja",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
