@@ -1,6 +1,6 @@
 // オフライン用。アプリ本体は端末にキャッシュし、2回目以降は電波がなくても起動する。
-// 20261007232955 はビルド時に置き換わる。更新を配るときはビルドし直すだけでよい。
-const CACHE = "shoulder-eval-20261007232955";
+// 20261008000034 はビルド時に置き換わる。更新を配るときはビルドし直すだけでよい。
+const CACHE = "shoulder-eval-20261008000034";
 const ASSETS = ["./", "./index.html", "./manifest.webmanifest", "./icon.svg"];
 
 self.addEventListener("install", e => {
@@ -10,7 +10,8 @@ self.addEventListener("install", e => {
 self.addEventListener("activate", e => {
   e.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+      // 同じ github.io 上の他のアプリ（腰部など）のキャッシュは消さない
+      .then(keys => Promise.all(keys.filter(k => k.startsWith("shoulder-eval-") && k !== CACHE).map(k => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
